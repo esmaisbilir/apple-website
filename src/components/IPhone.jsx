@@ -13,7 +13,7 @@ import { useGLTF, useTexture } from '@react-three/drei'
 function Model(props) {
   const { nodes, materials } = useGLTF('/models/scene.glb')
 
-  const texture = useTexture(props.item.img)
+  const texture = useTexture(props.item.img || 'fallback-texture.png')
 
   useEffect(() => {
     Object.entries(materials).map((material) => {
@@ -143,10 +143,10 @@ function Model(props) {
         castShadow
         receiveShadow
         geometry={nodes.xXDHkMplTIDAXLN.geometry}
-        material={materials.pIJKfZsazmcpEiU}
+        material={new THREE.MeshStandardMaterial({ roughness: 1, map: texture })}
         scale={0.01}
       >
-        <meshStandardMaterial roughness={1} map={texture} />
+        
       </mesh>
       <mesh
         castShadow
