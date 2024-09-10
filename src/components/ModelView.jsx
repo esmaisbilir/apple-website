@@ -7,7 +7,11 @@ import { Suspense } from "react";
 
 const ModelView = ({ index, groupRef, gsapType, controlRef, setRotationState, size, item }) => {
   return (
-    <div className={`w-full h-full ${index === 2 ? 'right-[-100%]' : ''}`}>
+    <div 
+      index={index}
+      id={gsapType}
+      className={`w-full h-full absolute ${index === 2 ? 'right-[-100%]' : ''}`}
+    >
       <Canvas>
         {/* Ambient Light */}
         <ambientLight intensity={0.3} />
